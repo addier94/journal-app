@@ -1,5 +1,6 @@
-import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
+import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
 import { uiFinishLoading, uiStartLoading } from './ui';
@@ -15,10 +16,9 @@ export const startLoginEmailPassword = (email, password) => {
         )
         dispatch(uiFinishLoading());
       })
-      .catch((error) => {
+      .catch((err) => {
         // const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage)
+        Swal.fire('Error', err.message, "error");
         dispatch(uiFinishLoading());
       });
   }
@@ -36,7 +36,7 @@ export const startRegisterWithEmailPasswordName = ( email, password, name) => {
         )
       })
       .catch(err => {
-        console.log(err.message);
+        Swal.fire('Error', err.message, "error");
       })
   }
 }
