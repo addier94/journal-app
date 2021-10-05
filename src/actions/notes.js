@@ -4,7 +4,9 @@ import { db } from "../firebase/firebase-config";
 import { collection, addDoc, updateDoc, doc } from "@firebase/firestore";
 import { types } from "../types/types";
 import { loadNotes } from "../helpers/loadNotes";
+import { fileUpload } from '../helpers/fileUpload';
 
+// journal
 
 export const startNewNote = () => {
   return async( dispatch, getState ) => {
@@ -75,4 +77,15 @@ export const refreshNote = ( id, note ) => ({
       ...note
     }
   }
-})
+});
+
+
+export const startUploading = ( file ) => {
+  return async( dispatch, getState ) => {
+    const { active:activeNote } = getState().notes;
+    
+    const fileUrl = await fileUpload( file )
+
+    console.log(fileUrl)
+  }
+}
