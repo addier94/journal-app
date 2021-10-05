@@ -27,7 +27,7 @@ export const JournalEntry = ({ id, date, title, body, url }) => {
                     className="journal__entry-picture"
                     style={{
                         backgroundSize: 'cover',
-                        backgroundImage: 'url(https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg)'
+                        backgroundImage: `url(${url})`
                     }}
                 ></div>
             }
